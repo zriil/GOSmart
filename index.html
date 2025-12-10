@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSmart - Perjalanan Jadi Lebih Mudah</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="page active">
+        <div class="splash-container">
+            <div class="splash-content">
+                <svg width="200" height="200" viewBox="0 0 200 200" class="logo-animation">
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="#FF7A00" stroke-width="2" opacity="0.2"/>
+                    <g transform="translate(100, 100)">
+                        <path d="M -20 -40 Q -15 -50 0 -55 Q 15 -50 20 -40" fill="none" stroke="#FF7A00" stroke-width="3" stroke-linecap="round"/>
+                        <rect x="-35" y="-15" width="70" height="35" rx="8" fill="#FF7A00" opacity="0.8"/>
+                        <circle cx="-25" cy="25" r="12" fill="none" stroke="#FF7A00" stroke-width="3"/>
+                        <circle cx="25" cy="25" r="12" fill="none" stroke="#FF7A00" stroke-width="3"/>
+                        <ellipse cx="0" cy="-10" rx="8" ry="6" fill="#FF7A00"/>
+                    </g>
+                </svg>
+                <h1 class="splash-title">GoSMART</h1>
+                <p class="splash-subtitle">Perjalanan Jadi Lebih Mudah</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <header class="home-header">
+            <div class="header-logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" class="logo-icon">
+                    <circle cx="20" cy="20" r="18" fill="none" stroke="#FF7A00" stroke-width="1.5" opacity="0.3"/>
+                    <g transform="translate(20, 20)">
+                        <path d="M -4 -8 Q -3 -10 0 -11 Q 3 -10 4 -8" fill="none" stroke="#FF7A00" stroke-width="1.5" stroke-linecap="round"/>
+                        <rect x="-7" y="-3" width="14" height="7" rx="1.5" fill="#FF7A00" opacity="0.8"/>
+                        <circle cx="-5" cy="5" r="2" fill="none" stroke="#FF7A00" stroke-width="1.5"/>
+                        <circle cx="5" cy="5" r="2" fill="none" stroke="#FF7A00" stroke-width="1.5"/>
+                    </g>
+                </svg>
+                <div>
+                    <h1>GoSMART</h1>
+                    <p>Perjalanan Jadi Lebih Mudah</p>
+                </div>
+            </div>
+            <button class="profile-btn" onclick="navigate('profile-page')">👤</button>
+        </header>
+
+        <section class="welcome-section">
+            <h2>Selamat Datang!</h2>
+            <p>Pilih layanan yang ingin Anda gunakan</p>
+        </section>
+
+        <section class="services-section">
+            <div class="service-card" onclick="navigate('gosend-page')">
+                <div class="service-icon">📦</div>
+                <h3>GoSend</h3>
+                <p>Pengiriman Paket</p>
+            </div>
+
+            <div class="service-card" onclick="navigate('goride-page')">
+                <div class="service-icon">🛴</div>
+                <h3>GoRide</h3>
+                <p>Pesan Kendaraan</p>
+            </div>
+
+            <div class="service-card" onclick="navigate('promo-page')">
+                <div class="service-icon">🎁</div>
+                <h3>Promo</h3>
+                <p>Daftar Promosi</p>
+            </div>
+        </section>
+
+        <section class="quick-links">
+            <button class="quick-link-btn" onclick="navigate('tracking-page')">
+                📍 Lacak Pengiriman
+            </button>
+        </section>
+    </div>
+
+    <!-- GoSend Page -->
+    <div id="gosend-page" class="page">
+        <header class="form-header">
+            <button class="back-btn" onclick="navigate('home-page')">←</button>
+            <h1>GoSend - Pengiriman Paket</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <form class="delivery-form" onsubmit="handleGoSendSubmit(event)">
+            <div class="form-section">
+                <h2 class="section-title">📍 Lokasi Pengiriman</h2>
+
+                <div class="form-group">
+                    <label for="pickup-location">Lokasi Pengambilan</label>
+                    <input type="text" id="pickup-location" placeholder="Masukkan alamat pengambilan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-location">Lokasi Tujuan</label>
+                    <input type="text" id="delivery-location" placeholder="Masukkan alamat tujuan" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">📦 Detail Paket</h2>
+
+                <div class="form-group">
+                    <label for="item-description">Deskripsi Barang</label>
+                    <input type="text" id="item-description" placeholder="Apa yang akan dikirimkan?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-weight">Berat Barang (kg)</label>
+                    <input type="number" id="item-weight" placeholder="Berat dalam kilogram" step="0.1" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">👤 Penerima</h2>
+
+                <div class="form-group">
+                    <label for="recipient-name">Nama Penerima</label>
+                    <input type="text" id="recipient-name" placeholder="Masukkan nama penerima" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient-phone">Nomor Telepon Penerima</label>
+                    <input type="tel" id="recipient-phone" placeholder="Contoh: 08123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Catatan Tambahan</label>
+                    <textarea id="notes" placeholder="Catatan khusus untuk pengantar (opsional)" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Pesan Pengiriman</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- GoRide Page -->
+    <div id="goride-page" class="page">
+        <header class="form-header">
+            <button class="back-btn" onclick="navigate('home-page')">←</button>
+            <h1>GoRide - Pesan Kendaraan</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <form class="ride-form" onsubmit="handleGoRideSubmit(event)">
+            <div class="form-section">
+                <h2 class="section-title">📍 Lokasi Perjalanan</h2>
+
+                <div class="form-group">
+                    <label for="pickup-location-ride">Lokasi Penjemputan</label>
+                    <input type="text" id="pickup-location-ride" placeholder="Masukkan lokasi penjemputan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination-location">Lokasi Tujuan</label>
+                    <input type="text" id="destination-location" placeholder="Masukkan lokasi tujuan" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Tipe Kendaraan</h2>
+
+                <div class="ride-type-options">
+                    <label class="ride-type-option">
+                        <input type="radio" name="ride-type" value="standard" checked>
+                        <div class="option-content">
+                            <span class="option-title">Standard</span>
+                            <span class="option-desc">Kendaraan standar</span>
+                        </div>
+                        <span class="option-price">Rp 15.000</span>
+                    </label>
+
+                    <label class="ride-type-option">
+                        <input type="radio" name="ride-type" value="premium">
+                        <div class="option-content">
+                            <span class="option-title">Premium</span>
+                            <span class="option-desc">Kendaraan nyaman</span>
+                        </div>
+                        <span class="option-price">Rp 25.000</span>
+                    </label>
+
+                    <label class="ride-type-option">
+                        <input type="radio" name="ride-type" value="xl">
+                        <div class="option-content">
+                            <span class="option-title">XL</span>
+                            <span class="option-desc">Kapasitas besar</span>
+                        </div>
+                        <span class="option-price">Rp 35.000</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">👤 Data Penumpang</h2>
+
+                <div class="form-group">
+                    <label for="passenger-name">Nama Penumpang</label>
+                    <input type="text" id="passenger-name" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="passenger-phone">Nomor Telepon</label>
+                    <input type="tel" id="passenger-phone" placeholder="Contoh: 08123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="special-requests">Permintaan Khusus</label>
+                    <textarea id="special-requests" placeholder="Ada permintaan khusus? (opsional)" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Pesan Kendaraan</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Promo Page -->
+    <div id="promo-page" class="page">
+        <header class="form-header">
+            <button class="back-btn" onclick="navigate('home-page')">←</button>
+            <h1>Promo Spesial</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <div class="promo-list">
+            <div class="promo-item">
+                <div class="promo-badge">50%</div>
+                <div class="promo-info">
+                    <h3>Diskon GoSend 50%</h3>
+                    <p>Hemat hingga 50% untuk pengiriman pertama Anda</p>
+                    <span class="promo-validity">Berlaku hingga 31 Desember 2025</span>
+                </div>
+                <button class="copy-btn" onclick="copyCode('GOSEND50')">GOSEND50</button>
+            </div>
+
+            <div class="promo-item">
+                <div class="promo-badge">Gratis</div>
+                <div class="promo-info">
+                    <h3>Gratis Ongkos GoRide</h3>
+                    <p>Dapatkan gratis ongkos untuk perjalanan pertama</p>
+                    <span class="promo-validity">Berlaku hingga 31 Desember 2025</span>
+                </div>
+                <button class="copy-btn" onclick="copyCode('GORIDE100')">GORIDE100</button>
+            </div>
+
+            <div class="promo-item">
+                <div class="promo-badge">30%</div>
+                <div class="promo-info">
+                    <h3>Cashback 30%</h3>
+                    <p>Cashback 30% untuk setiap transaksi GoSend</p>
+                    <span class="promo-validity">Berlaku hingga 31 Desember 2025</span>
+                </div>
+                <button class="copy-btn" onclick="copyCode('CASHBACK30')">CASHBACK30</button>
+            </div>
+
+            <div class="promo-item">
+                <div class="promo-badge">Bonus</div>
+                <div class="promo-info">
+                    <h3>Referral Bonus</h3>
+                    <p>Ajak teman dan dapatkan bonus untuk setiap referral</p>
+                    <span class="promo-validity">Program berkelanjutan</span>
+                </div>
+                <button class="copy-btn" onclick="copyCode('REFERRAL')">REFERRAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile-page" class="page">
+        <header class="form-header">
+            <button class="back-btn" onclick="navigate('home-page')">←</button>
+            <h1>Profil Saya</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar">J</div>
+                <div class="profile-info">
+                    <h2>John Doe</h2>
+                    <p>john.doe@example.com</p>
+                    <p class="phone">08123456789</p>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon trips">🚗</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Perjalanan</p>
+                        <p class="stat-value">42</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon spent">💳</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Pengeluaran</p>
+                        <p class="stat-value">Rp 1.25M</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon rating">⭐</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Rating</p>
+                        <p class="stat-value">4.8</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h3>Informasi Akun</h3>
+                
+                <div class="detail-item">
+                    <span class="detail-label">Bergabung Sejak:</span>
+                    <span class="detail-value">Januari 2024</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value">john.doe@example.com</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Nomor Telepon:</span>
+                    <span class="detail-value">08123456789</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="action-btn primary">Edit Profil</button>
+                <button class="action-btn secondary">Riwayat Transaksi</button>
+                <button class="action-btn secondary">Pengaturan</button>
+                <button class="action-btn danger">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Page -->
+    <div id="tracking-page" class="page">
+        <header class="form-header">
+            <button class="back-btn" onclick="navigate('home-page')">←</button>
+            <h1>Lacak Pesanan</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <div class="tracking-content">
+            <div class="order-id-card">
+                <p class="order-id">ID: GO-2024-123456</p>
+                <span class="status-badge in-progress">In Progress</span>
+            </div>
+
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <span style="font-size: 32px;">📍</span>
+                        <p>Peta Lokasi Real-time</p>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-info">
+                        <span>Perjalanan Berlangsung</span>
+                        <span class="progress-percentage">65%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Info Pengemudi</h2>
+                <div class="driver-card">
+                    <div class="driver-avatar">B</div>
+                    <div class="driver-info">
+                        <h3>Budi Santoso</h3>
+                        <div class="rating">⭐ 4.9</div>
+                        <p class="vehicle">Honda Scoopy - B 1234 CD</p>
+                    </div>
+                    <button class="contact-btn" onclick="alert('Menghubungi pengemudi...')">📞</button>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Detail Rute</h2>
+                
+                <div class="location-item">
+                    <div class="location-icon pickup">📍</div>
+                    <div class="location-details">
+                        <span class="location-label">Penjemputan</span>
+                        <span class="location-address">Jl. Sudirman No. 10, Jakarta</span>
+                    </div>
+                </div>
+
+                <div class="route-line"></div>
+
+                <div class="location-item">
+                    <div class="location-icon delivery">🎯</div>
+                    <div class="location-details">
+                        <span class="location-label">Pengiriman</span>
+                        <span class="location-address">Jl. Gatot Subroto No. 45, Jakarta</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-distance-section">
+                <div class="time-distance-card">
+                    <span style="font-size: 20px;">⏱️</span>
+                    <div>
+                        <p class="label">Estimasi Waktu</p>
+                        <p class="value">12 menit</p>
+                    </div>
+                </div>
+
+                <div class="time-distance-card">
+                    <span style="font-size: 20px;">📍</span>
+                    <div>
+                        <p class="label">Jarak</p>
+                        <p class="value">3.2 km</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tracking-actions">
+                <button class="action-btn secondary">Hubungi Pengemudi</button>
+                <button class="action-btn secondary">Laporan Masalah</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
